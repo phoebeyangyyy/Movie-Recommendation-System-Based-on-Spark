@@ -17,17 +17,17 @@ Recommendation systems are widely used today by big companies such as Amazon, Yo
 
 ## 2. Implementation:
 
-### Step.1 Data Exploration and Observations
+### Data Exploration and Observations
 
 The source data is relatively clean. Three data tables are complete with the only table (links.csv) having null values. This table is also not related to the major work here currently. We will focus on the ratings.csv table since it contains the most important information for data training, and then the movies.csv as it provides more perspectives on the movie's content for users.
 
 As expected, extreme cases for both users and movies are observed as mentioned above. The 'long-tail' characteristic is clearly present as the spasticity of the “user vs. item” matrix is as high as 0.983. 
 
-### Step.2 Training and model selection
+### Training and model selection
 
 The parameters that need tuning are rank (how many latent features for each user and movie), regParam (regulation parameter), and maxIter (max iteration). Grid search and cross-validation are used. Final parameters are determined and then used for training the whole set of data.
 
-### Step.3 Analysis
+### Analysis
 
 To compare the actual data and the predicted data, the first step is to round the predicted score to 0.5. Then as all ratings are plotted against the userId and movie Id, I found the graph too messy. Here, we are looking at the mean square error for 4 special cases (users rated most and least movies, and movies with most and least users) for a better understanding of the result. 
 
@@ -57,7 +57,7 @@ Further, it means that the categories of hidden k 'features' of one movie is not
 
 As already reflected by the observations above, when averaged by the number of ratings, the absolute error is lower. At the same time, the error converges as the number of ratings gets to around 25. We can see that although the less-rated movies may be fitted better, it's more unstable. Therefore, ideally, I would recommend 50 to be the minimal number of ratings for movie to get fair results. 
 
-### Step.4 Applications
+### Applications
 
 We can provide recommendations for users based on this model and find similar users or movies according to the cosine correlation of their latent features.
 
